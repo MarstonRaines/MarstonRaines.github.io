@@ -11,42 +11,28 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- 引入 Fira Code 等宽字体以增加极客感，并保留原有字体 -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@500;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
     <script defer src="app.js"></script>
 
-    
-<style>
-      /* ==========================================================
-         [临时修复] 滚动时内容重叠到导航栏上方的问题
-         ========================================================== */
-
+    <style>
       .site-header {
-        position: fixed; /* 强制将导航栏固定在窗口顶部 */
+        position: fixed; 
         top: 0;
         left: 0;
         width: 100%;
-        
-        /* [核心修复点 1] 设置一个和背景匹配的纯色，防止透视。
-           这里使用你现在的深色背景，确保它像一张纸盖住下面的内容。 */
         background-color: #0d111c; 
-        
-        /* [核心修复点 2] 设置极高的 z-index，确保它在“图层”的最上面 */
         z-index: 9999; 
-        
-        /* 可选：加个细边框增加层次感 */
         border-bottom: 1px solid rgba(255,255,255,0.1); 
       }
-
-      /* 因为将 header 固定了，需要给 main 留出顶部间距，防止开头的内容被遮挡 */
       main {
-        margin-top: 80px; /* 根据你导航栏的实际高度调整此值，可以多试几个，比如 60px 70px */
+        margin-top: 80px; 
       }
     </style>
-    
   </head>
   <body>
     <div class="poster-wall" aria-hidden="true">
@@ -84,7 +70,7 @@
           <h1 id="hero-title">周仁杰</h1>
           <p class="lede">
             华中农业大学信息学院信息与计算科学专业在读，已保研至电子科技大学数学科学学院。
-            关注机器学习、优化算法、多模态建模与密码学应用。
+            关注机器学习、优化算法、多模态建模与密码学应用。<span class="typing-cursor">_</span>
           </p>
           <div class="basic-grid">
             <div>
@@ -158,7 +144,7 @@
                 2025.2-2025.4 AdaBN 优化器研究：融合 AdaBelief 与 Adan 优势，提升收敛速度。
               </li>
               <li>
-                2025.2-2025.4 AdaBN 优化器研究：融合 AdaBelief 与 Adan 优势，提升收敛速度。
+                2025.4-2025.6 人脸情绪识别系统：Swin Transformer，FER2013 最优 72.5%。
               </li>
               <li>
                 2023.6-至今 S 盒密码学性质研究：最小代数次数快速计算方法（论文在投）。
@@ -279,7 +265,8 @@
         </div>
         <div class="gallery" data-reveal>
           <figure class="gallery-item featured">
-            <div class="gallery-photo photo-a"></div>
+            <!-- 给图片加上 onclick 事件触发灯箱 -->
+            <div class="gallery-photo photo-a" onclick="openLightbox(this)"></div>
             <figcaption>
               <p class="gallery-label">FEATURED SERIES</p>
               <h3>校园纪实 · 现场故事</h3>
@@ -287,7 +274,7 @@
             </figcaption>
           </figure>
           <figure class="gallery-item">
-            <div class="gallery-photo photo-b"></div>
+            <div class="gallery-photo photo-b" onclick="openLightbox(this)"></div>
             <figcaption>
               <p class="gallery-label">PORTRAIT</p>
               <h3>人物瞬间</h3>
@@ -295,7 +282,7 @@
             </figcaption>
           </figure>
           <figure class="gallery-item">
-            <div class="gallery-photo photo-c"></div>
+            <div class="gallery-photo photo-c" onclick="openLightbox(this)"></div>
             <figcaption>
               <p class="gallery-label">ARCHITECTURE</p>
               <h3>光影与结构</h3>
@@ -303,7 +290,7 @@
             </figcaption>
           </figure>
           <figure class="gallery-item">
-            <div class="gallery-photo photo-d"></div>
+            <div class="gallery-photo photo-d" onclick="openLightbox(this)"></div>
             <figcaption>
               <p class="gallery-label">CITY NIGHT</p>
               <h3>城市夜色</h3>
@@ -340,12 +327,15 @@
 
     <footer class="site-footer">
       <p>Copyright 2026 周仁杰. All rights reserved.</p>
-      
-      
-<div style="margin-top: 10px;">
-    <img src="https://visitor-badge.laobi.icu/badge?page_id=marstonraines.github.io" alt="visitors">
-</div>
-      
+      <div style="margin-top: 10px;">
+        <img src="https://visitor-badge.laobi.icu/badge?page_id=marstonraines.github.io" alt="visitors">
+      </div>
     </footer>
+
+    <!-- 灯箱 (Lightbox) 容器结构 -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+      <span class="close-btn">&times;</span>
+      <div class="lightbox-content" id="lightbox-img"></div>
+    </div>
   </body>
 </html>
