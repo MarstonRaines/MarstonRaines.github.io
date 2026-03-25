@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
@@ -17,6 +17,36 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <script defer src="app.js"></script>
+
+    
+<style>
+      /* ==========================================================
+         [临时修复] 滚动时内容重叠到导航栏上方的问题
+         ========================================================== */
+
+      .site-header {
+        position: fixed; /* 强制将导航栏固定在窗口顶部 */
+        top: 0;
+        left: 0;
+        width: 100%;
+        
+        /* [核心修复点 1] 设置一个和背景匹配的纯色，防止透视。
+           这里使用你现在的深色背景，确保它像一张纸盖住下面的内容。 */
+        background-color: #0d111c; 
+        
+        /* [核心修复点 2] 设置极高的 z-index，确保它在“图层”的最上面 */
+        z-index: 9999; 
+        
+        /* 可选：加个细边框增加层次感 */
+        border-bottom: 1px solid rgba(255,255,255,0.1); 
+      }
+
+      /* 因为将 header 固定了，需要给 main 留出顶部间距，防止开头的内容被遮挡 */
+      main {
+        margin-top: 80px; /* 根据你导航栏的实际高度调整此值，可以多试几个，比如 60px 70px */
+      }
+    </style>
+    
   </head>
   <body>
     <div class="poster-wall" aria-hidden="true">
@@ -128,7 +158,7 @@
                 2025.2-2025.4 AdaBN 优化器研究：融合 AdaBelief 与 Adan 优势，提升收敛速度。
               </li>
               <li>
-                2025.4-2025.6 人脸情绪识别系统：Swin Transformer，FER2013 最优 72.5%。
+                2025.2-2025.4 AdaBN 优化器研究：融合 AdaBelief 与 Adan 优势，提升收敛速度。
               </li>
               <li>
                 2023.6-至今 S 盒密码学性质研究：最小代数次数快速计算方法（论文在投）。
@@ -233,8 +263,8 @@
         </div>
         <div class="github-card" data-reveal>
           <p>GitHub 主页</p>
-          <a class="text-link" href="https://github.com/yourname" target="_blank" rel="noreferrer">
-            https://github.com/yourname
+          <a class="text-link" href="https://github.com/MarstonRaines" target="_blank" rel="noreferrer">
+            https://github.com/MarstonRaines
           </a>
         </div>
       </section>
@@ -310,6 +340,12 @@
 
     <footer class="site-footer">
       <p>Copyright 2026 周仁杰. All rights reserved.</p>
+      
+      
+<div style="margin-top: 10px;">
+        <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fmarstonraines.github.io&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=访问量&edge_flat=false" alt="Hits">
+      </div>
+      
     </footer>
   </body>
 </html>
