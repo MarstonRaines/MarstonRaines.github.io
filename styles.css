@@ -620,3 +620,25 @@ main {
 .close-btn:hover {
   color: var(--accent);
 }
+
+/* ==========================================================
+   【紧急修复】移动端性能与防崩溃优化
+   ========================================================== */
+@media (max-width: 768px) {
+  /* 1. 在手机端彻底隐藏导致内存崩溃的海报墙 */
+  .poster-wall {
+    display: none !important;
+  }
+  
+  /* 2. 移除手机端的毛玻璃效果，拯救 GPU */
+  .lightbox {
+    backdrop-filter: none;
+    background-color: rgba(8, 10, 14, 0.98); /* 改用几乎不透明的纯色背景替代模糊 */
+  }
+
+  /* 3. 稍微调小手机端的全屏图片预览比例，防止撑爆屏幕 */
+  .lightbox-content {
+    width: 95%;
+    height: 70vh;
+  }
+}
